@@ -24,7 +24,6 @@ test {
 }
 
 dependencies {
-  implementation("com.netflix.frigga:frigga")
   implementation(project(":orca-core"))
   implementation(project(":orca-retrofit"))
   implementation(project(":orca-front50"))
@@ -34,7 +33,8 @@ dependencies {
   implementation("io.spinnaker.kork:kork-moniker")
   implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml")
   implementation("io.kubernetes:client-java")
-  implementation("javax.validation:validation-api")
+  implementation("javax.validation:validation-api:+")
+  implementation("com.netflix.frigga:frigga:+")
   implementation("org.jetbrains:annotations")
   implementation("com.fasterxml.jackson.datatype:jackson-datatype-guava")
 
@@ -49,7 +49,7 @@ dependencies {
   testImplementation(project(":orca-test-groovy"))
   testImplementation(project(":orca-api-tck"))
   testImplementation(project(":orca-queue"))
-  testImplementation("com.github.tomakehurst:wiremock:2.15.0")
+  testImplementation("com.github.tomakehurst:wiremock:3.0.0-beta-7")
   testImplementation("org.springframework:spring-test")
   testImplementation("org.junit.jupiter:junit-jupiter-api")
   testImplementation("org.junit.platform:junit-platform-runner")
@@ -60,6 +60,7 @@ dependencies {
   testImplementation("dev.minutest:minutest")
   testImplementation("io.strikt:strikt-core")
   testImplementation("io.mockk:mockk")
+
 
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-api")
   testRuntimeOnly("org.junit.vintage:junit-vintage-engine")

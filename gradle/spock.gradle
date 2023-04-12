@@ -22,9 +22,10 @@ apply plugin: "groovy"
 
 dependencies {
   testImplementation("org.spockframework:spock-core")
-  testImplementation("cglib:cglib-nodep")
+  testImplementation("cglib:cglib-nodep:+")
   testImplementation("org.objenesis:objenesis")
-  testImplementation("org.codehaus.groovy:groovy")
+  //testImplementation("org.codehaus.groovy:groovy")
+  testImplementation("org.apache.groovy:groovy:4.0.9")
   testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
 }
 

@@ -93,6 +93,15 @@ dependencies {
   testImplementation("io.strikt:strikt-core")
   testImplementation("io.mockk:mockk")
 }
+tasks.withType( Copy).all {
+  duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+tasks.withType(Tar){
+  duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+tasks.withType(Zip){
+  duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
 
 test {
   //The Implementation-Version is set in the MANIFEST.MF for the JAR produced via testing so that

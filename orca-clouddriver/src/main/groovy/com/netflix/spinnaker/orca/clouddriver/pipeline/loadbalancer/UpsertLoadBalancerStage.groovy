@@ -32,7 +32,7 @@ import javax.annotation.Nonnull
 @CompileStatic
 class UpsertLoadBalancerStage implements StageDefinitionBuilder {
   public static
-  final String PIPELINE_CONFIG_TYPE = getType(UpsertLoadBalancerStage)
+  final String PIPELINE_CONFIG_TYPE = StageDefinitionBuilder.getType(UpsertLoadBalancerStage)
 
   @Override
   void taskGraph(@Nonnull StageExecution stage, @Nonnull TaskNode.Builder builder) {

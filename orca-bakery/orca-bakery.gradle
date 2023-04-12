@@ -25,7 +25,7 @@ dependencies {
   implementation("com.fasterxml.jackson.core:jackson-databind")
   implementation("com.fasterxml.jackson.datatype:jackson-datatype-guava")
   implementation("io.spinnaker.fiat:fiat-core:$fiatVersion")
-  implementation("org.codehaus.groovy:groovy-datetime")
+ // implementation("org.codehaus.groovy:groovy-datetime")
 
   api("io.spinnaker.kork:kork-web")
 
@@ -33,7 +33,7 @@ dependencies {
   annotationProcessor("org.projectlombok:lombok")
 
   testImplementation(project(":orca-test-groovy"))
-  testImplementation("com.github.tomakehurst:wiremock:2.15.0")
+  testImplementation("com.github.tomakehurst:wiremock:3.0.0-beta-7")
   testImplementation("org.junit.jupiter:junit-jupiter-api")
   testImplementation("org.assertj:assertj-core")
   testImplementation("org.mockito:mockito-core:2.25.0")

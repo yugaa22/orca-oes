@@ -40,7 +40,9 @@ public class TemplateLoader {
     this.schemeLoaders = schemeLoaders;
   }
 
-  /** @return a LIFO list of pipeline templates */
+  /**
+   * @return a LIFO list of pipeline templates
+   */
   public List<PipelineTemplate> load(TemplateConfiguration.TemplateSource template) {
     PipelineTemplate pipelineTemplate = load(template.getSource());
     return load(pipelineTemplate);

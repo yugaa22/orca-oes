@@ -152,7 +152,7 @@ class ClusterSizePreconditionTask implements CloudProviderAware, RetryableTask, 
     private final String value
     private final Closure<Boolean> closure
 
-    public Operator(String value, Closure<Boolean> closure) {
+    Operator(String value, Closure<Boolean> closure) {
       this.value = value
       this.closure = closure
     }
