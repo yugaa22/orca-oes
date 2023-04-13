@@ -24,7 +24,7 @@ dependencies {
   implementation(project(":orca-core"))
   implementation(project(":orca-interlink"))
   implementation(project(":orca-queue"))
-
+  implementation("io.vavr:vavr:1.0.0-alpha-4")
   implementation("io.spinnaker.kork:kork-sql")
   implementation("io.spinnaker.kork:kork-telemetry")
   implementation("com.netflix.spectator:spectator-api")
