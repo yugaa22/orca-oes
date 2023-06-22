@@ -108,7 +108,7 @@ jobs:
       - name: Build
         env:
           ORG_GRADLE_PROJECT_version: ${{ steps.build_variables.outputs.VERSION }}
-        run: ./gradlew --no-build-cache --no-daemon -PenableCrossCompilerPlugin=true front50-web:installDist -x test 
+        run: ./gradlew --no-build-cache --no-daemon -PenableCrossCompilerPlugin=true orca-web:installDist -x test 
 
       - name: dockerBuildpush
         uses: docker/build-push-action@v2
