@@ -39,7 +39,7 @@ public class ServerGroup {
    * For some reason TargetServerGroup allows looking at 2 properties: {@link
    * TargetServerGroup#isDisabled()} } *
    */
-  @JsonAlias("isDisabled")
+  @JsonAlias({"isDisabled", "disabled"})
   public Boolean disabled;
 
   public Map<String, Object> launchConfig;
