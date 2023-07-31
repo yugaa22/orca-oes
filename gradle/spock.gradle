@@ -26,7 +26,6 @@ dependencies {
   testImplementation("org.objenesis:objenesis")
   //testImplementation("org.codehaus.groovy:groovy")
   testImplementation("org.apache.groovy:groovy:4.0.9")
-  testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
 }
 
 tasks.compileGroovy.enabled = false

@@ -16,27 +16,24 @@
 
 package com.netflix.spinnaker.orca.bakery.api
 
-import com.github.tomakehurst.wiremock.junit.WireMockRule
+import com.github.tomakehurst.wiremock.WireMockServer
 import com.netflix.spinnaker.orca.bakery.config.BakeryConfiguration
 import com.netflix.spinnaker.orca.jackson.OrcaObjectMapper
-import org.junit.Rule
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
 import retrofit.RequestInterceptor
 import retrofit.RetrofitError
 import retrofit.client.OkClient
 import spock.lang.Specification
 import spock.lang.Subject
 import static com.github.tomakehurst.wiremock.client.WireMock.*
-import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig
 import static com.google.common.net.HttpHeaders.LOCATION
 import static java.net.HttpURLConnection.*
-import static retrofit.Endpoints.newFixedEndpoint
 import static retrofit.RestAdapter.LogLevel.FULL
 
 class BakeryServiceSpec extends Specification {
 
-  @Rule
-  public WireMockRule wireMockRule = new WireMockRule(wireMockConfig().dynamicPort())
-
+  private WireMockServer wireMockServer
   @Subject BakeryService bakery
 
   private static final region = "us-west-1"
@@ -51,16 +48,26 @@ class BakeryServiceSpec extends Specification {
 
   def mapper = OrcaObjectMapper.newInstance()
 
-  def setup() {
-    bakeURI = wireMockRule.url(bakePath)
-    statusURI = wireMockRule.url(statusPath)
+  @BeforeEach
+  void setup() {
+    wireMockServer = new WireMockServer()
+    wireMockServer.start()
+    configureFor("localhost", wireMockServer.port())
+
+    bakeURI = "http://localhost:" + wireMockServer.port() + bakePath
+    statusURI = "http://localhost:" + wireMockServer.port() + statusPath
 
     bakery = new BakeryConfiguration(
-      retrofitClient: new OkClient(),
-      retrofitLogLevel: FULL,
-      spinnakerRequestInterceptor: Mock(RequestInterceptor)
+        retrofitClient: new OkClient(),
+        retrofitLogLevel: FULL,
+        spinnakerRequestInterceptor: Mock(RequestInterceptor)
     )
-      .buildService(wireMockRule.url("/"))
+        .buildService(wireMockServer.url("/"))
+  }
+
+  @AfterEach
+  void cleanup() {
+    wireMockServer.stop()
   }
 
   def "can lookup a bake status"() {

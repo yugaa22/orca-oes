@@ -93,6 +93,7 @@ dependencies {
   testImplementation("dev.minutest:minutest")
   testImplementation("io.strikt:strikt-core")
   testImplementation("io.mockk:mockk")
+  testImplementation("org.apache.groovy:groovy-json")
 }
 tasks.withType( Copy).all {
   duplicatesStrategy = DuplicatesStrategy.EXCLUDE
@@ -120,7 +121,5 @@ test {
       }
     }
   }
-  useJUnitPlatform {
-    includeEngines("junit-jupiter", "junit-vintage")
-  }
+  useJUnitPlatform()
 }
