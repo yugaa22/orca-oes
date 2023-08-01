@@ -75,5 +75,7 @@ dependencies {
   testImplementation("org.springframework.boot:spring-boot-starter-test")
 
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-api")
-  testRuntimeOnly "org.junit.vintage:junit-vintage-engine"
+}
+test {
+  useJUnitPlatform()
 }

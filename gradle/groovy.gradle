@@ -27,5 +27,4 @@ dependencies {
   testImplementation("cglib:cglib-nodep")
   testImplementation("org.objenesis:objenesis")
   testRuntimeOnly("org.junit.platform:junit-platform-engine")
-  testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
 }
